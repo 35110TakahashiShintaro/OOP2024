@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter01", "Chapter01", "{4E426D0E-4738-4C5B-B84E-55FB5660AA8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductSample", "Chapter01\ProductSample\ProductSample.csproj", "{49666A36-240F-4A57-B03C-E288F17F92E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter02", "Chapter02", "{82855088-9D82-4E52-B7BC-DDD9C2EF1125}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistanceConverter", "Chapter02\DistanceConverter\DistanceConverter.csproj", "{EB1EC2A1-6526-49F6-AEBF-E251B1E09F5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "距離換算プログラム", "距離換算プログラム", "{CC5F8113-94BF-486C-AF29-8EB2231A2F24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49666A36-240F-4A57-B03C-E288F17F92E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49666A36-240F-4A57-B03C-E288F17F92E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49666A36-240F-4A57-B03C-E288F17F92E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49666A36-240F-4A57-B03C-E288F17F92E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB1EC2A1-6526-49F6-AEBF-E251B1E09F5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB1EC2A1-6526-49F6-AEBF-E251B1E09F5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB1EC2A1-6526-49F6-AEBF-E251B1E09F5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB1EC2A1-6526-49F6-AEBF-E251B1E09F5C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{49666A36-240F-4A57-B03C-E288F17F92E4} = {4E426D0E-4738-4C5B-B84E-55FB5660AA8D}
+		{EB1EC2A1-6526-49F6-AEBF-E251B1E09F5C} = {CC5F8113-94BF-486C-AF29-8EB2231A2F24}
+		{CC5F8113-94BF-486C-AF29-8EB2231A2F24} = {82855088-9D82-4E52-B7BC-DDD9C2EF1125}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7B53417-A72C-421C-8799-FADED2026A9B}
+	EndGlobalSection
+EndGlobal
