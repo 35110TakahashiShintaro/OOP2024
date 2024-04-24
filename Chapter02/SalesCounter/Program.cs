@@ -9,7 +9,7 @@ namespace SalesCounter {
     internal class Program {
         static void Main(string[] args) {
 
-            SalesCounter sales = new SalesCounter(ReadSales("date/sales.csv"));
+            SalesCounter sales = new SalesCounter(@"date/sales.csv");
             Dictionary<string,int>amountPerStore = sales.GetPerStoreSales();
             foreach(KeyValuePair<string,int> obj in amountPerStore) {
                 Console.WriteLine("{0}{1}",obj.Key,obj.Value);
@@ -17,20 +17,6 @@ namespace SalesCounter {
 
         }
 
-        //売上データを読み込み、Saleオブジェクトのリストを返す
-        static List<Sale>ReadSales(string filePath) {
-            List<Sale> salse = new List<Sale>();
-            string[] lines = File.ReadAllLines(filePath);
-            foreach(string line in lines) {
-                string[] items = line.Split(',');
-                Sale sale = new Sale {
-                    ShopName = items[0],
-                    ProductCategory = items[1],
-                    Amount = int.Parse(items[2]),
-                };
-                salse.Add(sale);
-            }
-            return salse;
-        }
+        
     }
 }
