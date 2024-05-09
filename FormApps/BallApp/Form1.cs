@@ -1,5 +1,6 @@
 using System.Windows.Forms;
 
+
 namespace BallApp {
     public partial class Form1 : Form {
         //PictureBox pb;
@@ -16,6 +17,7 @@ namespace BallApp {
 
         //フォームが最初にロードされるとき一度だけ実行される
         private void Form1_Load(object sender, EventArgs e) {
+            this.Text = "BallApp SoccerBall:" + balls.Count + "TennisBall:" + balls.Count;
         }
 
         private void timer1_Tick(object sender, EventArgs e) {
@@ -33,10 +35,10 @@ namespace BallApp {
             Obj ball = null;
 
             if (e.Button == MouseButtons.Left) {
-                ball = new SoccerBall(e.X, e.Y);
+                ball = new SoccerBall(e.X - 25, e.Y - 25);
                 pb.Size = new Size(50, 50);
             }else if (e.Button == MouseButtons.Right) {
-                ball = new TennisBall(e.X, e.Y);
+                ball = new TennisBall(e.X - 12, e.Y - 12);
                 pb.Size = new Size(25, 25);
             }
             pb.Image = ball.Image;
@@ -45,8 +47,11 @@ namespace BallApp {
             pb.Parent = this;
             timer1.Start();
 
+            balls.Count();
             balls.Add(ball);
             pbs.Add(pb);
+
+            this.Text = "BallApp SoccerBall:" + SoccerBall.Count + "TennisBall:" + TennisBall.Count;
 
         }
     }
