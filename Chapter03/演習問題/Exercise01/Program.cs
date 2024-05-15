@@ -31,16 +31,23 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(List<int> numbers) {
-            numbers.ForEach(n => Console.WriteLine(n / 2));            
+            numbers.ForEach(n => Console.WriteLine(n / 2.0));            
         }
 
         private static void Exercise1_3(List<int> numbers) {
-            numbers.Where(n => 50 <= n);
+            numbers.Where(n => 50 <= n).ToList()
+                                       .ForEach(n => Console.WriteLine(n));
+            //foreach (var item in fi) {
+            //    Console.WriteLine(fi);
+            //}
         }
 
         private static void Exercise1_4(List<int> numbers) {
-            var bi = numbers.Select(n => n * 2);
-            Console.WriteLine(numbers);
+            numbers.Select(n => n * 2).ToList()
+                                    　.ForEach(n => Console.WriteLine(n));
+            //foreach (var item in fi) {
+            //    Console.WriteLine(fi);
+            //}
         }
     }
 }
