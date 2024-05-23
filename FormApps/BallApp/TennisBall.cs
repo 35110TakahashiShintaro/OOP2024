@@ -16,13 +16,15 @@ namespace BallApp {
 
             var rand1 = new Random();
 
-            MoveX = rand1.Next(-50, 50); 
-            MoveY = rand1.Next(-50, 50);
+            MoveX = rand1.Next(-25, 25); 
+            MoveY = rand1.Next(-25, 25);
 
             Count++;
         }              
 
-        public override bool Move(PictureBox pbBar, PictureBox pbBall) {
+        //戻り値：１…移動OK、　２…落下した、　３…バーに当たった
+        public override int Move(PictureBox pbBar, PictureBox pbBall) {
+            int ret = 1;
 
             Rectangle rBar = new Rectangle(pbBar.Location.X, pbBar.Location.Y,
                                                      pbBar.Width, pbBar.Height);
@@ -32,13 +34,25 @@ namespace BallApp {
 
             if (PosX > 750 || PosX < 0) {
                 MoveX = -MoveX;
-            }else if (PosY > 500 || PosY < 0) {
+            }
+            if (PosY < 0) {
                 MoveY = -MoveY;
             }
+
+            if (rBar.IntersectsWith(rBall)) {
+                MoveY = -MoveY;
+                ret = 3;
+            }
+
             PosX += MoveX;
             PosY += MoveY;
+            
+            //下に落下したか
+            if (PosY > 600) {
+                ret = 2;
+            }
 
-            return true;
+            return ret;            
         }
 
         public override bool Move(Keys direction) {

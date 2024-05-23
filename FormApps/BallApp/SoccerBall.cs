@@ -7,22 +7,29 @@ using System.Threading.Tasks;
 
 namespace BallApp {
     internal class SoccerBall : Obj{
+        
 
         public static int Count { get; set; }
 
         public SoccerBall(double xp, double yp)
             : base(xp - 25, yp - 25, @"Picture\soccer_ball.png"){
-
             var rand2 = new Random();
- 
 
-            MoveX = rand2.Next(-50, 50); //移動量設定
-            MoveY = rand2.Next(-50, 50);
+#if DEBUG
+            MoveX = 5;
+            MoveY = 5;
+#else
+            MoveX = rand2.Next(-25, 25); //移動量設定
+            MoveY = rand2.Next(-25, 25);
+#endif        
+            
 
             Count++;
         }
 
-        public override bool Move(PictureBox pbBar, PictureBox pbBall) {
+        //戻り値：１…移動OK、　２…落下した、　３…バーに当たった
+        public override int Move(PictureBox pbBar, PictureBox pbBall) {
+            int ret = 1;
 
             Rectangle rBar = new Rectangle(pbBar.Location.X, pbBar.Location.Y,
                                                      pbBar.Width, pbBar.Height);
@@ -33,13 +40,27 @@ namespace BallApp {
             if (PosX > 750 || PosX < 0) {
                 MoveX = -MoveX;
             }
-            if (PosY > 500 || PosY < 0 || rBar.IntersectsWith(rBall)) {
+            if (PosY < 0) {
                 MoveY = -MoveY;
             }
-            PosX += MoveX; 
+
+            //バーに当たったか
+            if (rBar.IntersectsWith(rBall)) {
+                MoveY = -MoveY;
+                ret = 3;
+            }
+            
+
+            PosX += MoveX;
             PosY += MoveY;
 
-            return true;
+            //下に落下したか
+            if (PosY > 600) {
+                ret = 2;
+            }
+
+            //移動完了
+            return ret;
         }
 
         public override bool Move(Keys direction) {
