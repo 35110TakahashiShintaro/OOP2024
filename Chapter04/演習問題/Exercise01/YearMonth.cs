@@ -24,15 +24,20 @@ namespace Exercise01 {
 
         //4.1.3
         public YearMonth AddOneMounth() { 
-            int newYear = Year;
-            int newMonth = Month + 1;
-
-            if (newMonth > 12) {
-                newMonth = 1;
-                newYear++;
+            if(Month == 12) {
+                return new YearMonth(Year + 1, 1);
+            }else {
+                return new YearMonth(Year, Month + 1);
             }
+            //int newYear = Year;
+            //int newMonth = Month + 1;
 
-            return new YearMonth(newYear, newMonth);
+            //if (newMonth > 12) {
+            //    newMonth = 1;
+            //    newYear++;
+            //}
+
+            //return new YearMonth(newYear, newMonth);
         }
 
         //4.1.4
