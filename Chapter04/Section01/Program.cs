@@ -27,14 +27,24 @@ namespace Section01 {
 
             Console.Write("整数を入力:");
             string inputNum = Console.ReadLine();
-            int height;
 
-            if(int.TryParse(inputNum, out height)) {
-                //int num = int.Parse(inputNum);
-                Console.Write("整数に変換した値" + height);
-            } else {
-                Console.WriteLine("失敗しました");
-            }            
+            try {
+                int height = int.Parse(inputNum);
+            }
+            catch (FormatException ex) {
+                Console.WriteLine("FormatException" + ex.Message);                
+            }
+            catch (ArgumentException ex){
+                Console.WriteLine("ArgumentException" + ex.Message);
+            }
+            catch (OverflowException ex) {
+                Console.WriteLine("OverflowException" + ex.Message);
+            }
+            finally {
+                Console.WriteLine("処理が終了しました");
+            }
+
+
         }
 
         private static object GetMessage(string code) {
