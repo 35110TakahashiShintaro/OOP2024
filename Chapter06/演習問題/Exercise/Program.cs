@@ -29,7 +29,8 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(int[] numbers) {
-            Console.WriteLine(numbers.Reverse().Skip(1).First());
+            Console.WriteLine(numbers.Skip(9).First()); 
+            Console.WriteLine(numbers.Skip(10).First());
         }
                 
         private static void Exercise1_3(int[] numbers) {
