@@ -47,13 +47,14 @@ namespace Exercise01 {
 
         private static void Exercise1_5(int[] numbers) {
             var zyufuku = numbers.Distinct();
+            var count = 0;
             foreach (int num in zyufuku) {
                 if(10 < num) {
-                    Console.WriteLine(num);
-                } else {
-
-                }
+                    count++;               
+                
+                }                
             }
+            Console.WriteLine(count);
         }
     }
 }
