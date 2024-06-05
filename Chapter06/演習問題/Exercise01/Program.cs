@@ -29,14 +29,22 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(int[] numbers) {
-            Console.WriteLine(numbers.Skip(9).First()); 
-            Console.WriteLine(numbers.Skip(10).First());
+            var skip = numbers.Length - 2;
+            foreach (var number in numbers.Skip(skip)) {
+                Console.WriteLine(number);
+            }
+            //Console.WriteLine(numbers.Skip(9).First()); 
+            //Console.WriteLine(numbers.Skip(10).First());
         }
                 
         private static void Exercise1_3(int[] numbers) {
-            foreach(int num in numbers) {
-                Console.WriteLine(num.ToString());
+            var strings = numbers.Select(n => n.ToString());
+            foreach(var numString in strings) {
+                Console.WriteLine(numString);
             }
+            //foreach(int num in numbers) {
+            //    Console.WriteLine(num.ToString());
+            //}
         }
 
         private static void Exercise1_4(int[] numbers) {
@@ -47,15 +55,8 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_5(int[] numbers) {
-            var zyufuku = numbers.Distinct();
-            var count = 0;
-            foreach (int num in zyufuku) {
-                if(10 < num) {
-                    count++;               
-                
-                }                
-            }
-            Console.WriteLine(count);
+            var zyufuku = numbers.Distinct().Count(n => n> 10);
+            Console.WriteLine(zyufuku);
         }
     }
 }
