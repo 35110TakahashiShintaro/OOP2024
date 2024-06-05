@@ -58,6 +58,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<Book> books) {
+            var kakaku = books.FirstOrDefault(book => book.Price >= 4000);
+            Console.WriteLine("価格が4000以上の最初の本:{0}", kakaku.Title);
         }
 
         private static void Exercise2_5(List<Book> books) {
