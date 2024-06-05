@@ -54,12 +54,14 @@ namespace Exercise03 {
 
         private static void Exercise3_5(string text) {
             var str = text.Split(' ').ToArray();
-            StringBuilder ss = new StringBuilder();
-            foreach (string word in str) {
-                ss.Append(word);
-                ss.Append(' ');
-            }
-            Console.WriteLine(ss);
+            if(str.Length > 0) {
+                var ss = new StringBuilder(str[0]);
+                foreach (var word in str.Skip(1) ){
+                    ss.Append(word);
+                    ss.Append(' ');
+                }
+                Console.WriteLine(ss);
+            }                      
         }
 
         private static void Exercise3_6(string text2) {
