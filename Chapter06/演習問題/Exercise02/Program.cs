@@ -52,6 +52,9 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<Book> books) {
+            int count = books.Count(book => book.Title.Contains("C#"));
+            double avg = books.Average(book => book.Pages);
+            Console.WriteLine("C#の平均ページ数:{0}",avg);
         }
 
         private static void Exercise2_4(List<Book> books) {
