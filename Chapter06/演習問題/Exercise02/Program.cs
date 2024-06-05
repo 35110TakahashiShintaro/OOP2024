@@ -58,11 +58,14 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<Book> books) {
-            var kakaku = books.FirstOrDefault(book => book.Price >= 4000);
-            Console.WriteLine("価格が4000以上の最初の本:{0}", kakaku.Title);
+            var izyou = books.FirstOrDefault(book => book.Price >= 4000);
+            Console.WriteLine("価格が4000以上の最初の本:{0}", izyou.Title);
         }
 
         private static void Exercise2_5(List<Book> books) {
+            var miman = books.Where(book => book.Price < 4000);
+            int maxPages = miman.Max(book => book.Pages);
+            Console.WriteLine("価格が4000未満の最大のページ数:{0}", maxPages);
         }
 
         private static void Exercise2_6(List<Book> books) {
