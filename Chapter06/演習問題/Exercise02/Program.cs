@@ -69,9 +69,18 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_6(List<Book> books) {
+            var page400 = books.Where(book => book.Pages >= 400);
+            var kou = page400.OrderByDescending(book => book.Price);
+            foreach (var book in kou) {
+                Console.WriteLine("ページ400以上のタイトル:{0},価格:{1}",book.Title, book.Price);
+            }
         }
 
         private static void Exercise2_7(List<Book> books) {
+            var Books500 = books.Where(book => book.Title.Contains("C#") && book.Pages <= 500);
+            foreach (var book in Books500) {
+                Console.WriteLine(book.Title);
+            }
         }
     }
 }
