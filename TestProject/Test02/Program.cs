@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace Test02 {
@@ -67,30 +68,34 @@ namespace Test02 {
         //問題１　合計値を表示
         //　　　　出力結果【618】
         private static void Exercise01(List<int> numbers) {
-
-
+            var sum = numbers.Sum();
+            Console.WriteLine(sum);
 
         }
 
         //問題２　偶数の最大値を表示
         //　　　　出力結果【94】
         private static void Exercise02(List<int> numbers) {
-
+            var max = numbers.Max(); 
+            Console.WriteLine(max);
 
 
         }
         //問題３　奇数のみを降順に並べて表示（遅延実行とする）
         //　　　　出力結果【91 87 53 35 31 17】
         private static void Exercise03(List<int> numbers) {
-
-
+            
+            var exists = numbers.Any(n => n % 2 == 1);
+            Console.WriteLine(exists);
+            
 
         }
 
         //問題４　10以上50以下の数字のみを表示（即時実行でも可とする）
         //　　　　出力結果【12 14 20 40 35 31 17 48】
         private static void Exercise04(List<int> numbers) {
-
+            //var izyou = numbers.Any(n => 10 <= n, n => n <= 50);
+            //Console.WriteLine(izyou);
 
 
         }
@@ -99,7 +104,8 @@ namespace Test02 {
         //　　　　出力結果【30.2才】
         private static void Exercise05(List<Person> persons) {
             
-
+            var avg = persons.Average(x => x.Age);
+            Console.WriteLine(avg);
 
         }
 
@@ -107,7 +113,8 @@ namespace Test02 {
         //　　　　出力結果【72.25kg】
         private static void Exercise06(List<Person> persons) {
 
-
+            var high = persons.Any(x => 170 <= x.Height);
+            //high = persons.Average(x => x.Weight);
 
         }
 
@@ -116,8 +123,9 @@ namespace Test02 {
         //　　　　　　　　　沖田宏一 59kg
         //　　　　　　　　　片山伸介 65kg】
         private static void Exercise07(List<Person> persons) {
-        
-        
+
+            var lowAll = persons.All(n => n.Weight <= 70);
+            Console.WriteLine(lowAll);
         
         }
 
@@ -126,8 +134,8 @@ namespace Test02 {
         //　　　　　　　　　片山伸介】
         private static void Exercise08(List<Person> persons) {
 
-
-
+            int count = persons.Count(person => person.Name.Contains("山"));
+            Console.WriteLine(count);
         }
     }
 }
