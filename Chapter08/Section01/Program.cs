@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,22 +24,64 @@ namespace Section01 {
             //} else {
             //    Console.WriteLine("閏年でない");
             //}
-            var bd = new DateTime(2005, 2, 21);
-            DayOfWeek dow = bd.DayOfWeek;
-            if (dow == DayOfWeek.Monday)
-                Console.WriteLine("今日は月曜");
 
             Console.WriteLine("生年月日を入力");
             Console.Write("年：");
-            var n = int.Parse(Console.ReadLine());
+            int year = int.Parse(Console.ReadLine());
             Console.Write("月：");
-            var t = int.Parse(Console.ReadLine());
+            int month = int.Parse(Console.ReadLine());
             Console.Write("日：");
-            var h = int.Parse(Console.ReadLine());
+            int day = int.Parse(Console.ReadLine());
+
+            var bd = new DateTime(year, month, day);
+
+            //和暦
+            var culture = new CultureInfo("ja-JP");
+            culture.DateTimeFormat.Calendar = new JapaneseCalendar();
+            var str = bd.ToString("ggyy年M月d日", culture);
+            Console.WriteLine(str);
+
+            //生まれてから○○日
+            var bornto = new DateTime(year, month, day);
+            var today = DateTime.Today;
+            TimeSpan diff = today - bornto;
+            Console.WriteLine("生まれてから" + diff.Days + "日です");
+
+            //switch (dow) {
+            //    case DayOfWeek.Sunday:
+            //        Console.WriteLine("日曜日");
+            //        break;
+            //    case DayOfWeek.Monday:
+            //        Console.WriteLine("月曜日");
+            //        break;
+            //    case DayOfWeek.Tuesday:
+            //        Console.WriteLine("火曜日");
+            //        break;
+            //    case DayOfWeek.Wednesday:
+            //        Console.WriteLine("水曜日");
+            //        break;
+            //    case DayOfWeek.Thursday:
+            //        Console.WriteLine("木曜日");
+            //        break;
+            //    case DayOfWeek.Friday:
+            //        Console.WriteLine("金曜日");
+            //        break;
+            //    case DayOfWeek.Saturday:
+            //        Console.WriteLine("土曜日");
+            //        break;
+            //}
+
+            //Console.WriteLine("生年月日を入力");
+            //Console.Write("年：");
+            //var n = int.Parse(Console.ReadLine());
+            //Console.Write("月：");
+            //var t = int.Parse(Console.ReadLine());
+            //Console.Write("日：");
+            //var h = int.Parse(Console.ReadLine());
             
-            var theDay = new DateTime(n, t, h);
-            string 曜日 = theDay.ToString("dddd");
-            Console.WriteLine("あなたは" + 曜日 + "に生まれました");
+            //var theDay = new DateTime(n, t, h);
+            //string 曜日 = theDay.ToString("dddd");
+            //Console.WriteLine("あなたは" + 曜日 + "に生まれました");
         }
     }
 }
