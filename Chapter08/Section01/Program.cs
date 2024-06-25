@@ -42,10 +42,9 @@ namespace Section01 {
             Console.WriteLine(str);
 
             //生まれてから○○日
-            var bornto = new DateTime(year, month, day);
             var today = DateTime.Today;
-            TimeSpan diff = today - bornto;
-            Console.WriteLine("生まれてから" + diff.Days + "日です");
+            TimeSpan diff = today - bd;
+            Console.WriteLine("生まれてから{0}日目です", diff.Days + 1);
 
             //switch (dow) {
             //    case DayOfWeek.Sunday:
