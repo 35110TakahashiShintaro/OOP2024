@@ -4,21 +4,34 @@ namespace DateTimeApp {
             InitializeComponent();
         }
 
-        private void btDateClick(object sender, EventArgs e) {
-
+        private void btDatecount_Click(object sender, EventArgs e) {
             var today = DateTime.Today;
-            TimeSpan diff = today - dtpBirthday.Value;
+            TimeSpan diff = today - dtpDate.Value;
             tbDisp.Text = (diff.Days + 1) + "ì˙ñ⁄";
         }
 
         private void btDayBefore_Click(object sender, EventArgs e) {
-            var before = dtpBirthday.Value.AddDays(-(double)nudDay.Value);
+            var before = dtpDate.Value.AddDays(-(double)nudDay.Value);
             tbDisp.Text = before + "ì˙ëO";
-        }        
+        }
 
         private void btDayAfter_Click(object sender, EventArgs e) {
-            var after = dtpBirthday.Value.AddDays((double)nudDay.Value);
+            var after = dtpDate.Value.AddDays((double)nudDay.Value);
             tbDisp.Text = after + "ì˙å„";
+        }
+
+        private void btAge_Click(object sender, EventArgs e) {
+            var today = DateTime.Today;
+            var age = GetAge(dtpDate.Value, today);
+            tbDisp.Text = age + "çŒÇ≈Ç∑";
+        }
+
+        private object GetAge(DateTime value, DateTime today) {
+            var age = today.Year - value.Year;
+            if(today < value.AddYears(age)) {
+                age--;
+            }
+            return age;
         }
     }
 }
