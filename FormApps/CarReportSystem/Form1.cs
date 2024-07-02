@@ -42,6 +42,7 @@ namespace CarReportSystem {
                 return CarReport.MakerGroup.その他;
             }
         }
+
         //指定したメーカーのラジオボタンをセット
         private void setRadioButtonMaker(CarReport.MakerGroup makerGroup) {
             switch (makerGroup) {
@@ -80,18 +81,22 @@ namespace CarReportSystem {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            //dgvCarReport.Columns["Picture"].Visible = false; //画像表示しない
+            dgvCarReport.Columns["Picture"].Visible = false; //画像表示しない
+
         }
 
-        private void dgvCarReport_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+        private void dgvCarReport_Click(object sender, EventArgs e) {
             dtpDate.Value = (DateTime)dgvCarReport.CurrentRow.Cells["Date"].Value;
             cbAuthor.Text = (string)dgvCarReport.CurrentRow.Cells["Author"].Value;
-            
+            setRadioButtonMaker((CarReport.MakerGroup)dgvCarReport.CurrentRow.Cells["Maker"].Value);
             cbCarName.Text = (string)dgvCarReport.CurrentRow.Cells["CarName"].Value;
             tbReport.Text = (string)dgvCarReport.CurrentRow.Cells["Report"].Value;
-
+            pbPicture.Image = (Image)dgvCarReport.CurrentRow.Cells["Picture"].Value;
         }
 
-        
+        private void btDeleteReport_Click(object sender, EventArgs e) {
+
+        }
     }
 }
+

@@ -290,6 +290,7 @@
             btDeleteReport.TabIndex = 5;
             btDeleteReport.Text = "削除";
             btDeleteReport.UseVisualStyleBackColor = true;
+            btDeleteReport.Click += btDeleteReport_Click;
             // 
             // label7
             // 
@@ -313,7 +314,7 @@
             dgvCarReport.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCarReport.Size = new Size(666, 150);
             dgvCarReport.TabIndex = 7;
-            dgvCarReport.CellContentClick += dgvCarReport_CellContentClick;
+            dgvCarReport.Click += dgvCarReport_Click;
             // 
             // btReportSave
             // 
