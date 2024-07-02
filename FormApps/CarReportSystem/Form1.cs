@@ -86,8 +86,8 @@ namespace CarReportSystem {
         }
 
         private void dgvCarReport_Click(object sender, EventArgs e) {
-            if (dgvCarReport.Rows.Count == 0)return;
-            
+            if (dgvCarReport.Rows.Count == 0) return;
+
             dtpDate.Value = (DateTime)dgvCarReport.CurrentRow.Cells["Date"].Value;
             cbAuthor.Text = (string)dgvCarReport.CurrentRow.Cells["Author"].Value;
             setRadioButtonMaker((CarReport.MakerGroup)dgvCarReport.CurrentRow.Cells["Maker"].Value);
@@ -106,9 +106,27 @@ namespace CarReportSystem {
                 CarReport selectedCarReport = (CarReport)selectedRow.DataBoundItem;
 
                 // BindingList から選択された車両レポートを削除する
-                listCarReports.Remove(selectedCarReport);
+                listCarReports.RemoveAt(dgvCarReport.CurrentRow.Index);
             }
+        }
 
+        private void btModifyReport_Click(object sender, EventArgs e) {
+            // 選択された行を取得する
+            DataGridViewRow selectedRow = dgvCarReport.SelectedRows[0];
+
+            // 選択された行から CarReport オブジェクトを取得する
+            CarReport selectedCarReport = (CarReport)selectedRow.DataBoundItem;
+
+            // 選択されたレポートの情報をフォームにセットする
+            dtpDate.Value = selectedCarReport.Date;
+            cbAuthor.Text = selectedCarReport.Author;
+            setRadioButtonMaker(selectedCarReport.Maker);
+            cbCarName.Text = selectedCarReport.CarName;
+            tbReport.Text = selectedCarReport.Report;
+            pbPicture.Image = selectedCarReport.Picture;
+
+            // データグリッドビューの更新
+            dgvCarReport.Refresh();
         }
     }
 }
