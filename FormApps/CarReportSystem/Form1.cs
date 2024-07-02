@@ -97,21 +97,18 @@ namespace CarReportSystem {
         }
 
         private void btDeleteReport_Click(object sender, EventArgs e) {
-            // DataGridView から選択された行を取得する
-            DataGridViewRow selectedRow = null;
+            // 削除する行が選択されているか確認する
             if (dgvCarReport.SelectedRows.Count > 0) {
-                selectedRow = dgvCarReport.SelectedRows[0];
-            }
-            // 選択された行がない場合は処理を終了する
-            if (selectedRow == null) {
-                return;
-            }
-            // 選択された行から CarReport オブジェクトを取得する
-            CarReport selectedCarReport = (CarReport)selectedRow.DataBoundItem;
+                // 選択された行を取得する
+                DataGridViewRow selectedRow = dgvCarReport.SelectedRows[0];
 
-            // BindingList から選択された車両レポートを削除する
-            listCarReports.Remove(selectedCarReport);
-            
+                // 選択された行から CarReport オブジェクトを取得する
+                CarReport selectedCarReport = (CarReport)selectedRow.DataBoundItem;
+
+                // BindingList から選択された車両レポートを削除する
+                listCarReports.Remove(selectedCarReport);
+            }
+
         }
     }
 }
