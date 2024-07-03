@@ -111,23 +111,30 @@ namespace CarReportSystem {
         }
 
         private void btModifyReport_Click(object sender, EventArgs e) {
-            // 選択された行を取得する
             DataGridViewRow selectedRow = dgvCarReport.SelectedRows[0];
 
-            // 選択された行から CarReport オブジェクトを取得する
             CarReport selectedCarReport = (CarReport)selectedRow.DataBoundItem;
 
-            // 選択されたレポートの情報をフォームにセットする
-            dtpDate.Value = selectedCarReport.Date;
-            cbAuthor.Text = selectedCarReport.Author;
-            setRadioButtonMaker(selectedCarReport.Maker);
-            cbCarName.Text = selectedCarReport.CarName;
-            tbReport.Text = selectedCarReport.Report;
-            pbPicture.Image = selectedCarReport.Picture;
+            selectedCarReport.Date = dtpDate.Value;
+            selectedCarReport.Author = cbAuthor.Text;
+            selectedCarReport.Maker = GetRadioButtonMaker();
+            selectedCarReport.CarName = cbCarName.Text;
+            selectedCarReport.Report = tbReport.Text;
+            selectedCarReport.Picture = pbPicture.Image;
+
+            int rowIndex = selectedRow.Index;
+            dgvCarReport.Rows[rowIndex].Cells["Date"].Value = selectedCarReport.Date;
+            dgvCarReport.Rows[rowIndex].Cells["Author"].Value = selectedCarReport.Author;
+            dgvCarReport.Rows[rowIndex].Cells["Maker"].Value = selectedCarReport.Maker;
+            dgvCarReport.Rows[rowIndex].Cells["CarName"].Value = selectedCarReport.CarName;
+            dgvCarReport.Rows[rowIndex].Cells["Report"].Value = selectedCarReport.Report;
+            dgvCarReport.Rows[rowIndex].Cells["Picture"].Value = selectedCarReport.Picture;
 
             // データグリッドビューの更新
             dgvCarReport.Refresh();
         }
+
+        
     }
 }
 
