@@ -51,6 +51,7 @@
             btReportSave = new Button();
             btReportOpen = new Button();
             ofdPicFileOpen = new OpenFileDialog();
+            tslbMessage = new StatusStrip();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).BeginInit();
@@ -313,7 +314,7 @@
             dgvCarReport.Name = "dgvCarReport";
             dgvCarReport.ReadOnly = true;
             dgvCarReport.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCarReport.Size = new Size(666, 150);
+            dgvCarReport.Size = new Size(666, 159);
             dgvCarReport.TabIndex = 7;
             dgvCarReport.Click += dgvCarReport_Click;
             // 
@@ -341,11 +342,20 @@
             // 
             ofdPicFileOpen.FileName = "openFileDialog1";
             // 
+            // tslbMessage
+            // 
+            tslbMessage.Location = new Point(0, 503);
+            tslbMessage.Name = "tslbMessage";
+            tslbMessage.Size = new Size(780, 22);
+            tslbMessage.TabIndex = 8;
+            tslbMessage.Text = "statusStrip1";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(780, 491);
+            ClientSize = new Size(780, 525);
+            Controls.Add(tslbMessage);
             Controls.Add(dgvCarReport);
             Controls.Add(pbPicture);
             Controls.Add(btPicDelete);
@@ -408,5 +418,6 @@
         private Button btReportSave;
         private Button btReportOpen;
         private OpenFileDialog ofdPicFileOpen;
+        private StatusStrip tslbMessage;
     }
 }
