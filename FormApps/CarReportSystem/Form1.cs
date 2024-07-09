@@ -126,6 +126,10 @@ namespace CarReportSystem {
 
         private void Form1_Load(object sender, EventArgs e) {
             dgvCarReport.Columns["Picture"].Visible = false;  //画像表示しない
+
+            //交互
+            dgvCarReport.RowsDefaultCellStyle.BackColor = Color.CadetBlue;
+            dgvCarReport.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue;
         }
 
         private void dgvCarReport_Click(object sender, EventArgs e) {
@@ -179,6 +183,11 @@ namespace CarReportSystem {
 
         //保存ボタン
         private void btReportSave_Click(object sender, EventArgs e) {
+            ReportSaveFile();
+        }
+
+        //ファイル保存
+        private void ReportSaveFile() {
             if (sfdReportFileSave.ShowDialog() == DialogResult.OK) {
                 try {
                     //バイナリー形式でシリアル化
@@ -190,15 +199,22 @@ namespace CarReportSystem {
                     }
                 }
                 catch (Exception) {
-
-                    throw;
+                    tslbMessage.Text = "書き込みエラー";
+                    //MessageBox.Show("エラーが発生しました: " + ex.Message, "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //throw;
                 }
 
 
             }
         }
 
+        //開くボタン
         private void btReportOpen_Click(object sender, EventArgs e) {
+            ReportOpenFile();
+        }
+
+        //
+        private void ReportOpenFile() {
             if (ofdReportFileOpen.ShowDialog() == DialogResult.OK) {
                 try {
                     //逆シリアル化でバイナリ形式を取り込む
@@ -219,16 +235,35 @@ namespace CarReportSystem {
                     }
                 }
                 catch (Exception) {
-
-                    throw;
+                    tslbMessage.Text = "ファイル形式が違います";
+                    //MessageBox.Show("違うファイルが開かれています", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //throw;
                 }
-
+                dgvCarReport.ClearSelection();  //セレクションを外す
 
             }
         }
 
-        private void button1_Click(object sender, EventArgs e) {
+        private void btInputItemsClear_Click_1(object sender, EventArgs e) {
             inputItemsAllClear();
+            dgvCarReport.ClearSelection();
+        }
+
+
+        private void 開くToolStripMenuItem_Click(object sender, EventArgs e) {
+            ReportOpenFile(); //ファイル開く処理
+        }
+
+        private void 保存ToolStripMenuItem_Click(object sender, EventArgs e) {
+            ReportSaveFile();　//ファイル保存処理
+        }
+
+        private void 終了ToolStripMenuItem_Click(object sender, EventArgs e) {
+
+            if (MessageBox.Show("本当に終了しますか？", "終了確認", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes) {
+                Application.Exit(); // アプリケーションを終了する
+            }
         }
     }
+
 }
