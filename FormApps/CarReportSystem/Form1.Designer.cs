@@ -54,6 +54,7 @@
             tslbMessage = new StatusStrip();
             ofdReportFileOpen = new OpenFileDialog();
             sfdReportFileSave = new SaveFileDialog();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCarReport).BeginInit();
@@ -334,7 +335,7 @@
             // btReportOpen
             // 
             btReportOpen.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            btReportOpen.Location = new Point(12, 395);
+            btReportOpen.Location = new Point(12, 400);
             btReportOpen.Name = "btReportOpen";
             btReportOpen.Size = new Size(75, 37);
             btReportOpen.TabIndex = 5;
@@ -358,11 +359,23 @@
             // 
             ofdReportFileOpen.FileName = "openFileDialog1";
             // 
+            // button1
+            // 
+            button1.Font = new Font("Yu Gothic UI", 14.25F);
+            button1.Location = new Point(12, 357);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 37);
+            button1.TabIndex = 9;
+            button1.Text = "クリア...";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(780, 525);
+            Controls.Add(button1);
             Controls.Add(tslbMessage);
             Controls.Add(dgvCarReport);
             Controls.Add(pbPicture);
@@ -429,5 +442,6 @@
         private StatusStrip tslbMessage;
         private OpenFileDialog ofdReportFileOpen;
         private SaveFileDialog sfdReportFileSave;
+        private Button button1;
     }
 }

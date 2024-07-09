@@ -199,7 +199,7 @@ namespace CarReportSystem {
         }
 
         private void btReportOpen_Click(object sender, EventArgs e) {
-            if(ofdReportFileOpen.ShowDialog() == DialogResult.OK) {
+            if (ofdReportFileOpen.ShowDialog() == DialogResult.OK) {
                 try {
                     //逆シリアル化でバイナリ形式を取り込む
 #pragma warning disable SYSLIB0011 // 型またはメンバーが旧型式です
@@ -209,6 +209,14 @@ namespace CarReportSystem {
                         listCarReports = (BindingList<CarReport>)bf.Deserialize(fs);
                         dgvCarReport.DataSource = listCarReports;
                     }
+                    // データグリッドビューの選択を解除
+                    dgvCarReport.ClearSelection();
+
+                    // 記録者と車名の履歴を登録する
+                    foreach (CarReport report in listCarReports) {
+                        setCbAuthor(report.Author);
+                        setCbCarName(report.CarName);
+                    }
                 }
                 catch (Exception) {
 
@@ -217,6 +225,10 @@ namespace CarReportSystem {
 
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            inputItemsAllClear();
         }
     }
 }
