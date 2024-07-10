@@ -49,8 +49,6 @@
             btDeleteReport = new Button();
             label7 = new Label();
             dgvCarReport = new DataGridView();
-            btReportSave = new Button();
-            btReportOpen = new Button();
             ofdPicFileOpen = new OpenFileDialog();
             tslbMessage = new StatusStrip();
             ofdReportFileOpen = new OpenFileDialog();
@@ -360,30 +358,6 @@
             dgvCarReport.TabIndex = 7;
             dgvCarReport.Click += dgvCarReport_Click;
             // 
-            // btReportSave
-            // 
-            btReportSave.BackColor = Color.LightCyan;
-            btReportSave.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            btReportSave.Location = new Point(12, 421);
-            btReportSave.Name = "btReportSave";
-            btReportSave.Size = new Size(75, 37);
-            btReportSave.TabIndex = 5;
-            btReportSave.Text = "保存...";
-            btReportSave.UseVisualStyleBackColor = false;
-            btReportSave.Click += btReportSave_Click;
-            // 
-            // btReportOpen
-            // 
-            btReportOpen.BackColor = Color.LightCyan;
-            btReportOpen.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            btReportOpen.Location = new Point(12, 378);
-            btReportOpen.Name = "btReportOpen";
-            btReportOpen.Size = new Size(75, 37);
-            btReportOpen.TabIndex = 5;
-            btReportOpen.Text = "開く...";
-            btReportOpen.UseVisualStyleBackColor = false;
-            btReportOpen.Click += btReportOpen_Click;
-            // 
             // ofdPicFileOpen
             // 
             ofdPicFileOpen.FileName = "openFileDialog1";
@@ -419,37 +393,37 @@
             // 開くToolStripMenuItem
             // 
             開くToolStripMenuItem.Name = "開くToolStripMenuItem";
-            開くToolStripMenuItem.Size = new Size(180, 22);
+            開くToolStripMenuItem.Size = new Size(119, 22);
             開くToolStripMenuItem.Text = "開く...";
             開くToolStripMenuItem.Click += 開くToolStripMenuItem_Click;
             // 
             // 保存ToolStripMenuItem
             // 
             保存ToolStripMenuItem.Name = "保存ToolStripMenuItem";
-            保存ToolStripMenuItem.Size = new Size(180, 22);
+            保存ToolStripMenuItem.Size = new Size(119, 22);
             保存ToolStripMenuItem.Text = "保存...";
             保存ToolStripMenuItem.Click += 保存ToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(177, 6);
+            toolStripSeparator1.Size = new Size(116, 6);
             // 
             // 色設定ToolStripMenuItem
             // 
             色設定ToolStripMenuItem.Name = "色設定ToolStripMenuItem";
-            色設定ToolStripMenuItem.Size = new Size(180, 22);
+            色設定ToolStripMenuItem.Size = new Size(119, 22);
             色設定ToolStripMenuItem.Text = "色設定...";
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(177, 6);
+            toolStripSeparator2.Size = new Size(116, 6);
             // 
             // 終了ToolStripMenuItem
             // 
             終了ToolStripMenuItem.Name = "終了ToolStripMenuItem";
-            終了ToolStripMenuItem.Size = new Size(180, 22);
+            終了ToolStripMenuItem.Size = new Size(119, 22);
             終了ToolStripMenuItem.Text = "終了";
             終了ToolStripMenuItem.Click += 終了ToolStripMenuItem_Click;
             // 
@@ -466,8 +440,6 @@
             Controls.Add(btPicDelete);
             Controls.Add(btDeleteReport);
             Controls.Add(btModifyReport);
-            Controls.Add(btReportOpen);
-            Controls.Add(btReportSave);
             Controls.Add(btAddReport);
             Controls.Add(btPicOpen);
             Controls.Add(tbReport);
@@ -523,8 +495,6 @@
         private Button btDeleteReport;
         private Label label7;
         private DataGridView dgvCarReport;
-        private Button btReportSave;
-        private Button btReportOpen;
         private OpenFileDialog ofdPicFileOpen;
         private StatusStrip tslbMessage;
         private OpenFileDialog ofdReportFileOpen;
