@@ -2,6 +2,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Metrics;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CarReportSystem {
@@ -262,6 +263,13 @@ namespace CarReportSystem {
 
             if (MessageBox.Show("本当に終了しますか？", "終了確認", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes) {
                 Application.Exit(); // アプリケーションを終了する
+            }
+        }
+
+        private void 色設定ToolStripMenuItem_Click(object sender, EventArgs e) {
+
+            if (cdColor.ShowDialog() == DialogResult.OK) {
+                BackColor = cdColor.Color;
             }
         }
     }
