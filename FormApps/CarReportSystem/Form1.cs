@@ -137,21 +137,27 @@ namespace CarReportSystem {
             dgvCarReport.RowsDefaultCellStyle.BackColor = Color.CadetBlue;
             dgvCarReport.AlternatingRowsDefaultCellStyle.BackColor = Color.AliceBlue;
 
-            //設定ファイルを逆シリアル化して背景を設定
-            try {
-                using (var xr = XmlReader.Create("settings.xml")) {
-                    var serializer = new XmlSerializer(typeof(Settings));
-                    var settings = serializer.Deserialize(xr) as Settings;
-
-                    if (settings != null) {
+            if (File.Exists("settings.xml")) {
+                //設定ファイルを逆シリアル化して背景を設定
+                try {
+                    using (var xr = XmlReader.Create("settings.xml")) {
+                        var serializer = new XmlSerializer(typeof(Settings));
+                        var settings = serializer.Deserialize(xr) as Settings;
                         BackColor = Color.FromArgb(settings.MainFormColor);
+                        settings.MainFormColor = BackColor.ToArgb();
+                        //if (settings != null) {
+                        //    BackColor = Color.FromArgb(settings.MainFormColor);
+                        //}
                     }
                 }
+                catch (Exception) {
+                    tslbMessage.Text = "色情報ファイルエラー";
+                }
+            } else {
+                tslbMessage.Text = ("色が設定されていません");
             }
-            catch (Exception) {
-                MessageBox.Show("色が設定されていません");
-            }
-            
+
+
 
 
         }
