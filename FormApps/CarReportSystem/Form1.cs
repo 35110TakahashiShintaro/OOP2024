@@ -149,7 +149,7 @@ namespace CarReportSystem {
                 }
             }
             catch (Exception) {
-                MessageBox.Show("設定ファイルの読み込みに失敗しました");
+                MessageBox.Show("色が設定されていません");
             }
             
 
