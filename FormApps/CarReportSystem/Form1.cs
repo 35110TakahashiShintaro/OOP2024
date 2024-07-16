@@ -305,14 +305,21 @@ namespace CarReportSystem {
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
             try {
-                using (var xw = XmlWriter.Create("settings.xml")) { 
+                using (var xw = XmlWriter.Create("settings.xml")) {
                     var serialazer = new XmlSerializer(settings.GetType());
                     serialazer.Serialize(xw, settings);
                 }
             }
             catch (Exception) {
-                MessageBox.Show("ファイルの保存に失敗しました" );
+                MessageBox.Show("ファイルの保存に失敗しました");
             }
+        }
+
+        private void このアプリについてToolStripMenuItem_Click(object sender, EventArgs e) {
+            var fmversion = new fmVersion();
+            fmversion.ShowDialog();
+
+
         }
     }
 
