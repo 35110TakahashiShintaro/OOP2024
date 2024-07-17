@@ -25,9 +25,10 @@ namespace Exercise01 {
 
         private static void Exercise1_1(string file) {
             var xdoc = XDocument.Load(file);
-            var teams = xdoc.Root.Elements().Select(x => new {
-                Name = (string)x.Element("name"),
-                Member = (int)x.Element("teammembers")
+            var teams = xdoc.Root.Elements()
+                                .Select(x => new {
+                                Name = (string)x.Element("name"),
+                                Member = (int)x.Element("teammembers")
             });
 
             foreach (var team in teams) {
@@ -37,7 +38,18 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(string file) {
+            var xdoc = XDocument.Load(file);
+            var sports = xdoc.Root.Elements("ballsport")
+                                 .Select(x => new {
+                                     NameKanji = (string)x.Element("name").Attribute("kanji"),
+                                     Name = (string)x.Element("name"),
+                                     FirstPlayed = (int)x.Element("firstplayed")
+                                 })
+                                 .OrderBy(x => x.FirstPlayed);
 
+            foreach (var bs in sports) {
+                Console.WriteLine($"競技名: {bs.NameKanji}");
+            }
         }
 
         private static void Exercise1_3(string file) {
