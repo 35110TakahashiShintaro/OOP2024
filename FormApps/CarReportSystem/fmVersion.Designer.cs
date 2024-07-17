@@ -54,7 +54,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("メイリオ", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            label2.Location = new Point(171, 75);
+            label2.Location = new Point(130, 75);
             label2.Name = "label2";
             label2.Size = new Size(74, 23);
             label2.TabIndex = 2;
@@ -64,7 +64,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("メイリオ", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            label3.Location = new Point(171, 111);
+            label3.Location = new Point(130, 115);
             label3.Name = "label3";
             label3.Size = new Size(40, 23);
             label3.TabIndex = 3;
@@ -74,7 +74,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("メイリオ", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            label4.Location = new Point(171, 149);
+            label4.Location = new Point(131, 155);
             label4.Name = "label4";
             label4.Size = new Size(39, 23);
             label4.TabIndex = 4;
