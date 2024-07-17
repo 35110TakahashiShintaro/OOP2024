@@ -58,11 +58,10 @@ namespace Exercise01 {
                                      Name = (string)x.Element("name"),
                                      TeamMembers = (int)x.Element("teammembers")
                                  })
-                                 .OrderByDescending(x => x.TeamMembers);
+                                 .OrderByDescending(x => x.TeamMembers)
+                                 .First();
+            Console.WriteLine($"競技名: {member.Name}");
 
-            foreach (var sport in member) {
-                Console.WriteLine($"競技名: {sport.Name} ");
-            }
         }
 
         private static void Exercise1_4(string file, string newfile) {
