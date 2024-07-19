@@ -68,37 +68,52 @@ namespace Exercise01 {
 
             var xdoc = XDocument.Load(file);
 
-            Console.Write("名称:");
-            string name = Console.ReadLine();
+            bool continueEditing = true;
+            while (continueEditing) {
+                int option;
+                while (!int.TryParse(Console.ReadLine(), out option) || (option != 1 && option != 2 && option != 3)) {
+                    Console.WriteLine("1：追加　2：保存");
+                    Console.Write("1か2を入力してください：");
+                }
+                switch (option) {
+                    case 1:
+                        Console.Write("名称:");
+                        string name = Console.ReadLine();
 
-            Console.Write("競技名 (漢字): ");
-            string kanjiName = Console.ReadLine();
+                        Console.Write("競技名 (漢字): ");
+                        string kanjiName = Console.ReadLine();
 
-            Console.Write("プレイ人数: ");
-            int members = int.Parse(Console.ReadLine());            
+                        Console.Write("プレイ人数: ");
+                        int members = int.Parse(Console.ReadLine());
 
-            Console.Write("初めてプレーされた年: ");
-            int firstPlayed = int.Parse(Console.ReadLine());
+                        Console.Write("初めてプレーされた年: ");
+                        int firstPlayed = int.Parse(Console.ReadLine());
 
-            Console.WriteLine();
+                        Console.WriteLine();
 
-            var bs = new XElement("ballsport",
-            new XElement("name", name),
-            new XAttribute("kanji", kanjiName),
-            new XElement("teammembers", members),
-            new XElement("firstplayed", firstPlayed)
-            );
+                        var bs = new XElement("ballsport",
+                        new XElement("name", name),
+                        new XAttribute("kanji", kanjiName),
+                        new XElement("teammembers", members),
+                        new XElement("firstplayed", firstPlayed)
+                        );
 
-            //var sd = new XElement("ballsport",
-            //    new XElement("name", "サッカー"),
-            //    new XElement("teammembers", 11),
-            //    new XElement("firstplayed", 1863)
-            //);
+                        //var sd = new XElement("ballsport",
+                        //    new XElement("name", "サッカー"),
+                        //    new XElement("teammembers", 11),
+                        //    new XElement("firstplayed", 1863)
+                        //);
 
-            xdoc.Root.Add(bs);
-            xdoc.Save(newfile);
-
-            Exercise1_1(newfile);
+                        xdoc.Root.Add(bs);
+                        break;
+                    case 2:
+                        xdoc.Save(newfile);
+                        continueEditing = false;
+                        break;
+                }
+            }
+            
+            
         }
     }
 }
