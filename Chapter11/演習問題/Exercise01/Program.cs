@@ -75,14 +75,10 @@ namespace Exercise01 {
             string kanjiName = Console.ReadLine();
 
             Console.Write("プレイ人数: ");
-            int members;
-            while (!int.TryParse(Console.ReadLine(), out members)) {
-            }
+            int members = int.Parse(Console.ReadLine());            
 
             Console.Write("初めてプレーされた年: ");
-            int firstPlayed;
-            while (!int.TryParse(Console.ReadLine(), out firstPlayed)) {
-            }
+            int firstPlayed = int.Parse(Console.ReadLine());
 
             Console.WriteLine();
 
