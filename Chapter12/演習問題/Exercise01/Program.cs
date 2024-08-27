@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace Exercise01 {
     internal class Program {
@@ -70,8 +71,14 @@ namespace Exercise01 {
             }
         }
 
-        private static void Exercise1_4(string v) {
+        private static void Exercise1_4(string filePath) {
 
+            Employee[] employees;
+            using (FileStream xmlStream = new FileStream("employees.xml", FileMode.Open)) {
+                using (XmlReader xmlReader = XmlReader.Create(xmlStream)) {
+                    employees = (Employee[])new DataContractSerializer(typeof(Employee[])).ReadObject(xmlReader);
+                }
+            }
         }
     }
 }
