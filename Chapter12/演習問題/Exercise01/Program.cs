@@ -43,8 +43,8 @@ namespace Exercise01 {
         private static void Exercise1_2(string filePath) {
             Employee[] employees = new Employee[]
             {
-            new Employee { Id = 1, Name = "John", HireDate = new DateTime(2020, 1, 15) },
-            new Employee { Id = 2, Name = "Smith", HireDate = new DateTime(2021, 6, 1) }
+            new Employee { Id = 1, Name = "赤井秀一", HireDate = new DateTime(2020, 1, 15) },
+            new Employee { Id = 2, Name = "古谷零", HireDate = new DateTime(2021, 6, 1) }
             };
 
             DataContractSerializer serializer = new DataContractSerializer(typeof(Employee[]));
@@ -55,10 +55,23 @@ namespace Exercise01 {
             }
         }
 
-        private static void Exercise1_3(string v) {
+        private static void Exercise1_3(string filePath) {
+            DataContractSerializer serializer = new DataContractSerializer(typeof(Employee[]));
+            using (FileStream stream = new FileStream(filePath, FileMode.Open)) {
+                Employee[] employees;
+                using (XmlReader xmlReader = XmlReader.Create(stream)) {
+                    employees = (Employee[])serializer.ReadObject(xmlReader);
+                }
+
+                Console.WriteLine("Deserialized Employees:");
+                foreach (var employee in employees) {
+                    Console.WriteLine("{0}{1}{2}",employee.Id, employee.Name, employee.HireDate.ToShortDateString());
+                }
+            }
         }
 
         private static void Exercise1_4(string v) {
+
         }
     }
 }
