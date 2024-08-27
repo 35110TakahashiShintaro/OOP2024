@@ -41,14 +41,12 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_2(string filePath) {
-            // 複数の Employee オブジェクトを配列に格納
             Employee[] employees = new Employee[]
             {
-            new Employee { Id = 1, Name = "John Doe", HireDate = new DateTime(2020, 1, 15) },
-            new Employee { Id = 2, Name = "Jane Smith", HireDate = new DateTime(2021, 6, 1) }
+            new Employee { Id = 1, Name = "John", HireDate = new DateTime(2020, 1, 15) },
+            new Employee { Id = 2, Name = "Smith", HireDate = new DateTime(2021, 6, 1) }
             };
 
-            // DataContractSerializer を使って Employee 配列を XML ファイルにシリアル化
             DataContractSerializer serializer = new DataContractSerializer(typeof(Employee[]));
             using (FileStream stream = new FileStream(filePath, FileMode.Create)) {
                 using (XmlWriter xmlWriter = XmlWriter.Create(stream)) {
