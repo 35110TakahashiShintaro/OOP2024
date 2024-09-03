@@ -21,7 +21,7 @@ namespace RssReader {
                 var url = wc.OpenRead(tbRssUrl.Text);
                 var xdoc = XDocument.Load(url);
 
-                var titles = xdoc.Descendants("item").Select(item => item.Element("title")?.Value);
+                var titles = xdoc.Descendants("item").Select(item => item.Element("title").Value);
 
                 foreach (var title in titles) {
                     if (title != null) {
