@@ -8,6 +8,10 @@ using System.Runtime.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Runtime.Serialization.Json;
+using System.Dynamic;
+using System.Text.Json;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 namespace Exercise01 {
     internal class Program {
@@ -29,7 +33,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_1(string outfile) {
-            Employee novel = new Employee {
+            var emp = new Employee {
                 Id = 1,
                 Name = "アーサー・C・クラーク",
                 HireDate = new DateTime(1917, 12, 16)
@@ -37,7 +41,7 @@ namespace Exercise01 {
 
             XmlSerializer serializer = new XmlSerializer(typeof(Employee));
             using (StreamWriter writer = new StreamWriter(outfile)) {
-                serializer.Serialize(writer, novel);
+                serializer.Serialize(writer, emp);
             }
         }
 
@@ -71,14 +75,31 @@ namespace Exercise01 {
             }
         }
 
-        private static void Exercise1_4(string filePath) {
+        private static void Exercise1_4(string file) {
+            var emps = new Employee[] {
+                new Employee {
+                    Id = 1202,
+                    Name = "赤井秀一",
+                    HireDate = new DateTime(2001, 5, 10),
+                },
+                new Employee {
+                    Id = 139,
+                    Name = "古谷零",
+                    HireDate = new DateTime(2004, 12, 1),
+                },
+            };
 
-            Employee[] employees;
-            using (FileStream xmlStream = new FileStream("employees.xml", FileMode.Open)) {
-                using (XmlReader xmlReader = XmlReader.Create(xmlStream)) {
-                    employees = (Employee[])new DataContractSerializer(typeof(Employee[])).ReadObject(xmlReader);
-                }
+            using (var stream = new FileStream(file, FileMode.Create, FileAccess.Write)) {
+
+                var options = new JsonSerializerOptions {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,  //キー名のカスタマイズ
+                    Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
+                    WriteIndented = true,
+                };
+
+                JsonSerializer.Serialize(stream, emps, options);
             }
+
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Section02 {
+namespace Section01 {
     // List 12-1
     public class Novel {
         public string Title { get; set; }
