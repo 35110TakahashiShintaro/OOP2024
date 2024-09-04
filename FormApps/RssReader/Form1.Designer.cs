@@ -51,9 +51,9 @@
             // 
             this.lbRssTitle.FormattingEnabled = true;
             this.lbRssTitle.ItemHeight = 12;
-            this.lbRssTitle.Location = new System.Drawing.Point(26, 48);
+            this.lbRssTitle.Location = new System.Drawing.Point(26, 96);
             this.lbRssTitle.Name = "lbRssTitle";
-            this.lbRssTitle.Size = new System.Drawing.Size(1020, 220);
+            this.lbRssTitle.Size = new System.Drawing.Size(1020, 172);
             this.lbRssTitle.TabIndex = 2;
             this.lbRssTitle.SelectedIndexChanged += new System.EventHandler(this.lbRssTitle_SelectedIndexChanged);
             // 
