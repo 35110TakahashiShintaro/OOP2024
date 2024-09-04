@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -18,7 +11,6 @@ namespace RssReader {
         }
 
         private void btGet_Click(object sender, EventArgs e) {
-
             using (var wc = new WebClient()) {
                 var url = wc.OpenRead(tbRssUrl.Text);
                 var xdoc = XDocument.Load(url);
@@ -27,17 +19,11 @@ namespace RssReader {
                                  .Select(item => new {
                                      Title = item.Element("title").Value,
                                      Link = item.Element("link").Value,
-                                 });
-                               
+                                 }).ToList();
 
-                foreach (var title in xitems) {
-                    //if (title != null) {
-                    lbRssTitle.Items.Add(title);
-                    //}
+                foreach (var item in xitems) {
+                    lbRssTitle.Items.Add(item.Title); 
                 }
-
-                
-                
             }
         }
 
@@ -45,7 +31,7 @@ namespace RssReader {
             if (lbRssTitle.SelectedItem != null) {
                 var selectedItem = (dynamic)lbRssTitle.SelectedItem;
                 var link = (string)selectedItem.Link;
-                webView1.Navigate(link); 
+                webView1.Navigate(link);
             }
         }
     }
