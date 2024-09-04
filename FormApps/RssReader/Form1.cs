@@ -28,11 +28,9 @@ namespace RssReader {
                                      Link = item.Element("link").Value,
                                  }).ToList();
 
-                lbRssTitle.Items.Clear();
                 foreach (var item in items) {
                     lbRssTitle.Items.Add(item.Title); 
                 }
-                lbRssTitle.Tag = items;
             }
         }
 
