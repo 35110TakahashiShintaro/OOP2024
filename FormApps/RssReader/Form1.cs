@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Windows.UI.Xaml.Controls.Primitives;
+using static System.Windows.Forms.LinkLabel;
 
 namespace RssReader {
+
     public partial class Form1 : Form {
-        private dynamic xitems;
+        List<ItemDate> items;
 
         public Form1() {
             InitializeComponent();
@@ -17,26 +22,26 @@ namespace RssReader {
                 var url = wc.OpenRead(tbRssUrl.Text);
                 var xdoc = XDocument.Load(url);
 
-                xitems = xdoc.Descendants("item")
-                                 .Select(item => new {
+                items = xdoc.Descendants("item")
+                                 .Select(item => new ItemDate{
                                      Title = item.Element("title").Value,
                                      Link = item.Element("link").Value,
                                  }).ToList();
 
                 lbRssTitle.Items.Clear();
-                foreach (var item in xitems) {
+                foreach (var item in items) {
                     lbRssTitle.Items.Add(item.Title); 
                 }
-                lbRssTitle.Tag = xitems;
+                lbRssTitle.Tag = items;
             }
         }
 
         private void lbRssTitle_SelectedIndexChanged(object sender, EventArgs e) {
-            if (lbRssTitle.SelectedIndex != -1) {
-                var selectedItem = xitems[lbRssTitle.SelectedIndex];
-                var link = selectedItem.Link;
-                webView1.Navigate(link);
-            }
+            webView1.Navigate(items[lbRssTitle.SelectedIndex].Link);
         }
+    }
+    public class ItemDate {
+        public string Title { get; set; }
+        public string Link { get; set; }
     }
 }
