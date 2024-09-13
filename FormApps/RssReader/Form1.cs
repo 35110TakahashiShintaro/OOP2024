@@ -48,10 +48,10 @@ namespace RssReader {
                 }
             }
 
-            // 初期選択
-            if (cbCategory.Items.Count > 0) {
-                cbCategory.SelectedIndex = 0;
-            }
+            //// 初期選択
+            //if (cbCategory.Items.Count > 0) {
+            //    cbCategory.SelectedIndex = 0;
+            //}
         }
 
         private async void InitializeWebView2Async() {
@@ -158,6 +158,8 @@ namespace RssReader {
                     .ToList();
             }
         }
+
+        
     }
 
     public class ItemDate {
