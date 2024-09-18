@@ -55,9 +55,9 @@ namespace SampleEntityFramework {
         private static void Exercise1_4() {
             using (var db = new BooksDbContext()) {
                 var oldBooks = db.Books
-                    .OrderBy(b => b.PublishedYear) 
-                    .Take(3) 
-                    .ToList();
+                    .OrderBy(b => b.PublishedYear)
+                    .Include(nameof(Author))
+                    .Take(3);
 
                 foreach (var book in oldBooks) {
                     Console.WriteLine(book.Title + " " + book.Author.Name);

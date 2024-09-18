@@ -121,6 +121,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Chapter13", "Chapter13", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleEntityFramework", "Chapter13\SampleEntityFramework\SampleEntityFramework.csproj", "{1ACB1F26-BC29-41E7-BE11-AC8756DB2B15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADOSample", "FormApps\ADOSample\ADOSample.csproj", "{F2AC7D0B-4D56-40F5-A3B5-B1B21F2B9993}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -275,6 +277,10 @@ Global
 		{1ACB1F26-BC29-41E7-BE11-AC8756DB2B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1ACB1F26-BC29-41E7-BE11-AC8756DB2B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1ACB1F26-BC29-41E7-BE11-AC8756DB2B15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2AC7D0B-4D56-40F5-A3B5-B1B21F2B9993}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2AC7D0B-4D56-40F5-A3B5-B1B21F2B9993}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2AC7D0B-4D56-40F5-A3B5-B1B21F2B9993}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2AC7D0B-4D56-40F5-A3B5-B1B21F2B9993}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -326,6 +332,7 @@ Global
 		{F2A442A9-7512-485D-BAA5-4B060DEE0B0C} = {FE35FAED-0A82-4AD7-9CBA-D4AA01B5D1E9}
 		{50C86506-6730-4D95-BF01-239703D6B21E} = {8EE8865A-A40D-4D52-BE2B-00EE653C031E}
 		{1ACB1F26-BC29-41E7-BE11-AC8756DB2B15} = {2B40AFB3-05AC-45DA-A53F-AC53A6322630}
+		{F2AC7D0B-4D56-40F5-A3B5-B1B21F2B9993} = {8EE8865A-A40D-4D52-BE2B-00EE653C031E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7B53417-A72C-421C-8799-FADED2026A9B}
