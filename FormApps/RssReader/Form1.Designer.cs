@@ -37,7 +37,7 @@
             // 
             // tbRssUrl
             // 
-            this.tbRssUrl.Location = new System.Drawing.Point(414, 67);
+            this.tbRssUrl.Location = new System.Drawing.Point(414, 76);
             this.tbRssUrl.Name = "tbRssUrl";
             this.tbRssUrl.Size = new System.Drawing.Size(632, 19);
             this.tbRssUrl.TabIndex = 0;
@@ -46,7 +46,7 @@
             // btGet
             // 
             this.btGet.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.btGet.Location = new System.Drawing.Point(916, 92);
+            this.btGet.Location = new System.Drawing.Point(916, 101);
             this.btGet.Name = "btGet";
             this.btGet.Size = new System.Drawing.Size(130, 28);
             this.btGet.TabIndex = 1;
@@ -78,7 +78,7 @@
             // 
             // tbRssSearch
             // 
-            this.tbRssSearch.Location = new System.Drawing.Point(414, 135);
+            this.tbRssSearch.Location = new System.Drawing.Point(414, 145);
             this.tbRssSearch.Name = "tbRssSearch";
             this.tbRssSearch.Size = new System.Drawing.Size(632, 19);
             this.tbRssSearch.TabIndex = 6;
@@ -86,7 +86,7 @@
             // btSearch
             // 
             this.btSearch.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.btSearch.Location = new System.Drawing.Point(916, 160);
+            this.btSearch.Location = new System.Drawing.Point(916, 170);
             this.btSearch.Name = "btSearch";
             this.btSearch.Size = new System.Drawing.Size(130, 30);
             this.btSearch.TabIndex = 7;

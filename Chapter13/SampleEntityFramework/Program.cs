@@ -1,6 +1,7 @@
 ﻿using SampleEntityFramework.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,54 @@ namespace SampleEntityFramework {
             //AddAuthors();
             //AddBooks();
             //UpdateBook();
-            DisplayBooks();
-           
+            Console.WriteLine("1-2");
+            DisplayBooks2();
+
+            Console.WriteLine();
+            Console.WriteLine("1-3");
+            DisplayBooks3();
+
+            Console.WriteLine();
+            Console.WriteLine("1-4");
+            Exercise1_4();
+
+            Console.WriteLine();
+            Console.WriteLine("1-5");
+            Exercise1_5();
+
+            Console.ReadLine();
+        }
+        static void DisplayBooks2() {
+            using (var db = new BooksDbContext()) {
+                foreach (var book in db.Books.ToList()) {
+                    Console.WriteLine("{0}{1}{2}({3:yyyy/MM/dd})",
+                    book.Title, book.PublishedYear,
+                    book.Author.Name, book.Author.Birthday);
+                }
+            }
+        }
+        static void DisplayBooks3() {
+            using (var db = new BooksDbContext()) {
+                int maxTitle = db.Books.Max(b => b.Title.Length);
+
+                var longTitle = db.Books
+                    .Where(b => b.Title.Length == maxTitle)
+                    .Include(b => b.Author) 
+                    .ToList();
+
+                foreach (var book in longTitle) {
+                    Console.WriteLine(book.Title + " " + book.Author.Name);
+                }
+            }
+        }
+        private static void Exercise1_4() {
 
         }
-        
+
+        private static void Exercise1_5() {
+
+        }
+
         private static void DeleteBooks() {
             using (var db = new BooksDbContext()) {
                 var book = db.Books.SingleOrDefault(x => x.Id == 10);
@@ -91,16 +135,8 @@ namespace SampleEntityFramework {
             }
 
         }
-        static void DisplayBooks() {
-            using (var db = new BooksDbContext()) {
-                foreach (var book in db.Books.ToList()) {
-                    Console.WriteLine("{0}{1}{2}({3:yyyy/MM/dd})",
-                    book.Title, book.PublishedYear,
-                    book.Author.Name, book.Author.Birthday);
-                }
-            }
-        }
         
+
         private static void AddBooks() {
             using (var db = new BooksDbContext()) {
                 var author1 = db.Authors.Single(a => a.Name == "夏目漱石");
