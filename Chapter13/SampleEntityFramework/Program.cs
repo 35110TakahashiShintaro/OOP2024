@@ -45,7 +45,6 @@ namespace SampleEntityFramework {
 
                 var longTitle = db.Books
                     .Where(b => b.Title.Length == maxTitle)
-                    .Include(b => b.Author) 
                     .ToList();
 
                 foreach (var book in longTitle) {
@@ -58,7 +57,6 @@ namespace SampleEntityFramework {
                 var oldBooks = db.Books
                     .OrderBy(b => b.PublishedYear) 
                     .Take(3) 
-                    .Include(b => b.Author) 
                     .ToList();
 
                 foreach (var book in oldBooks) {
@@ -68,7 +66,19 @@ namespace SampleEntityFramework {
         }
 
         private static void Exercise1_5() {
+            using (var db = new BooksDbContext()) {
+                var authors = db.Authors
+                                .OrderByDescending(a => a.Birthday)
+                                .ToList();
 
+                foreach (var author in authors) {
+                    Console.WriteLine($"著者: {author.Name}");
+
+                    foreach (var book in author.Books) {
+                        Console.WriteLine($"タイトル: {book.Title}, 発行年: {book.PublishedYear}");
+                    }
+                }
+            }
         }
 
         private static void DeleteBooks() {
