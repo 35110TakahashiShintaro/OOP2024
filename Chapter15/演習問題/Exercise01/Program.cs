@@ -44,12 +44,39 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_4() {
+            var query = Library.Books.Join(Library.Categories,
+                                            book => book.CategoryId,
+                                            category => category.Id,
+                                            (book, category) => new {
+                                                book.Title,
+                                                book.PublishedYear,
+                                                book.Price,
+                                                CategoryName = category.Name,
+                                            });
+
+            foreach (var book in query) {
+                Console.WriteLine("{0}年{1}円{2}({3})",
+                                book.PublishedYear,
+                                book.Price,
+                                book.Title,
+                                book.CategoryName
+                                );
+            }
         }
 
         private static void Exercise1_5() {
+            var category2016 = Library.Books.Where(b => b.PublishedYear == 2016)
+                                          .Select(b => b.CategoryId)
+                                          .Distinct()
+                                          .Select(id => Library.Categories.First(c => c.Id == id).Name);
+
+            foreach (var category in category2016) {
+                Console.WriteLine(category);
+            }
         }
 
         private static void Exercise1_6() {
+
         }
 
         private static void Exercise1_7() {
