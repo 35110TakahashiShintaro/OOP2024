@@ -1,5 +1,6 @@
 ﻿using Section01;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -76,13 +77,54 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_6() {
-
+            var query = Library.Books
+                            .Join(Library.Categories,   //結合する２番目のシーケンス
+                                    book => book.CategoryId,//対象シーケンスの結合キー
+                                    category => category.Id,//２番目のシーケンスの結合キー
+                                    (book, category) => new {
+                                        book.Title,
+                                        CategoryName = category.Name
+                                    })
+                            .GroupBy(x => x.CategoryName)
+                            .OrderBy(x => x.Key);
+            foreach (var group in query) {
+                Console.WriteLine("#{0}", group.Key);
+                foreach (var item in group) {
+                    Console.WriteLine("  {0}", item.Title);
+                }
+            }
         }
 
         private static void Exercise1_7() {
+            var categoriesId = Library.Categories.Single(c => c.Name == "Development").Id;
+            var query = Library.Books.Where(b => b.CategoryId == categoriesId)
+                                        .GroupBy(b => b.PublishedYear)
+                                        .OrderBy(b => b.Key);
+            foreach (var group in query) {
+                Console.WriteLine("#{0}年", group.Key);
+                foreach (var item in group) {
+                    Console.WriteLine("  {0}", item.Title);
+                }
+            }
         }
 
         private static void Exercise1_8() {
+            var categoryBook = Library.Categories
+                                      .GroupJoin(
+                                         Library.Books,
+                                         category => category.Id,
+                                         book => book.CategoryId,
+                                         (category, books) => new {
+                                             CategoryName = category.Name,
+                                             BookCount = books.Count()
+                                         })
+                                      .Where(category => category.BookCount >= 4);
+
+            Console.WriteLine("4冊以上発行されているカテゴリ:");
+
+            foreach (var category in categoryBook) {
+                Console.WriteLine(category.CategoryName);
+            }
         }
     }
 }
