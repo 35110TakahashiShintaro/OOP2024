@@ -25,7 +25,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_2(List<string> names) {
-            var count = names.Count(s => s.Contains("o")).ToArray();
+            var count = names.Count(s => s.Contains("o"));
             Console.WriteLine(count);
         }
 
