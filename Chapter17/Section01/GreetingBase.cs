@@ -12,6 +12,9 @@ namespace Section01 {
             return "";
         }
     }
+    //abstract class GreetingBase {
+    //    public abstract string GetMessage();
+    //}
 
     // List 17-4
     //abstract class GreetingBase {
