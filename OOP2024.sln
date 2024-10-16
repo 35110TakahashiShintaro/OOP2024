@@ -155,6 +155,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistanceConverter", "Chapte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextNumberSizeChange", "Chapter17\TemplateMethod\LineCounter\TextNumberSizeChange\TextNumberSizeChange.csproj", "{4A46BA6B-AAAE-4C84-845E-71597CBAF74E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{62349E07-6B57-4E76-8CC1-DC750EAC7486}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApplication", "WPF\SampleApplication\SampleApplication.csproj", "{E8DF3CD2-D34F-492A-B1BF-7EBBB732F3E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -353,6 +357,10 @@ Global
 		{4A46BA6B-AAAE-4C84-845E-71597CBAF74E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A46BA6B-AAAE-4C84-845E-71597CBAF74E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A46BA6B-AAAE-4C84-845E-71597CBAF74E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8DF3CD2-D34F-492A-B1BF-7EBBB732F3E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8DF3CD2-D34F-492A-B1BF-7EBBB732F3E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8DF3CD2-D34F-492A-B1BF-7EBBB732F3E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8DF3CD2-D34F-492A-B1BF-7EBBB732F3E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -418,6 +426,7 @@ Global
 		{5F124115-4D84-4C09-A771-49DCEF30B974} = {B0272A98-20AD-42AF-A224-BFC23857C7E4}
 		{4426EB90-824B-44D2-96CC-56238D726BB5} = {5F124115-4D84-4C09-A771-49DCEF30B974}
 		{4A46BA6B-AAAE-4C84-845E-71597CBAF74E} = {6B33CDEA-5880-4955-B4BA-C835954A557E}
+		{E8DF3CD2-D34F-492A-B1BF-7EBBB732F3E2} = {62349E07-6B57-4E76-8CC1-DC750EAC7486}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A7B53417-A72C-421C-8799-FADED2026A9B}

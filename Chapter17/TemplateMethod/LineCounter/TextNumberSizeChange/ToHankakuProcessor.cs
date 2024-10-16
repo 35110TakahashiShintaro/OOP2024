@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextFileProcessor;
+using TextNumberSizeChange.Framework;
 
 namespace TextNumberSizeChange {
-    class ToHankakuProcessor : TextProcessor{
+    class ToHankakuProcessor : TextProcessor, ITextFileService {
 
         private int _count;
         string _text;
         private Dictionary<char, char> _fullWidthToHalfWidth;
 
-        protected override void Initialize(string fname) {
-            _count = 0;
+        public ToHankakuProcessor() {
             _fullWidthToHalfWidth = new Dictionary<char, char> {
                 {'０', '0'},
                 {'１', '1'},
@@ -28,17 +28,22 @@ namespace TextNumberSizeChange {
             };
         }
 
-        protected override void Execute(string line) {
+        public void Initialize(string fname) {
+            _count = 0;
+        }
+
+        public void Execute(string line) {
             string convertedLine = ConvertToHalfWidthNumbers(line);
             Console.WriteLine(convertedLine);
             _text = convertedLine;
-            _count ++;
+            _count++;
         }
 
-        protected override void Terminate() {
+        public void Terminate() {
             Console.WriteLine("{0}行", _count);
             Console.WriteLine(_text);
         }
+
         private string ConvertToHalfWidthNumbers(string line) {
             StringBuilder sb = new StringBuilder();
 
