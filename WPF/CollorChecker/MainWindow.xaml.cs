@@ -21,5 +21,14 @@ namespace CollorChecker {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) {
+            //var value = (int)rSlider.Value;
+            byte r = (byte)rSlider.Value;
+            byte g = (byte)gSlider.Value;
+            byte b = (byte)bSlider.Value;
+
+            colorArea.Background = new SolidColorBrush(Color.FromRgb(r, g, b));
+        }
     }
 }
