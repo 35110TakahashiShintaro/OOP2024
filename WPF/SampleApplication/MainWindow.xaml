@@ -5,9 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SampleApplication"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Hello!" Height="30" Width="100" Click="Button_Click"/>
+        Title="Hello world" Height="300" Width="300" FontSize="14">
 
-    </Grid>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="okButton" Content="OK" Margin="5" Width="75" Click="okButton_Click"/>
+            <Button x:Name="cancelButton" Content="キャンセル" Margin="5" Width="75" Click="cancelButton_Click"/>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock TextWrapping="Wrap" Text="メッセージを入力してください"/>
+            <TextBox x:Name="messageTextBox" TextWrapping="Wrap" Height="23" Width="120"/>
+        </StackPanel>
+    </DockPanel>
 </Window>

@@ -13,21 +13,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SampleApplication {
+namespace CollorChecker {
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-        }
-
-        private void okButton_Click(object sender, RoutedEventArgs e) {
-            MessageBox.Show(string.Format("入力された文字は{0}です。", messageTextBox.Text));
-        }
-
-        private void cancelButton_Click(object sender, RoutedEventArgs e) {
-            MessageBox.Show("キャンセルされました");
         }
     }
 }
