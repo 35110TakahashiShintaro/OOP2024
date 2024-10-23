@@ -30,5 +30,21 @@ namespace CollorChecker {
 
             colorArea.Background = new SolidColorBrush(Color.FromRgb(r, g, b));
         }
+
+        private void StockButton_Click(object sender, RoutedEventArgs e) {
+            string colorInfo = $"R: {(byte)rSlider.Value}, G: {(byte)gSlider.Value}, B: {(byte)bSlider.Value}";
+            LB.Items.Add(colorInfo);
+        }
+
+        private void LB_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if (LB.SelectedItem is string selectedColorInfo) {
+                var values = selectedColorInfo.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                byte r = byte.Parse(values[1]);
+                byte g = byte.Parse(values[3]);
+                byte b = byte.Parse(values[5]);
+
+                colorArea.Background = new SolidColorBrush(Color.FromRgb(r, g, b));
+            }
+        }
     }
 }
