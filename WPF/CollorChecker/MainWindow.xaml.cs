@@ -26,11 +26,16 @@ namespace CollorChecker {
             currentColor.Color = Color.FromRgb((byte)rSlider.Value, (byte)gSlider.Value, (byte)bSlider.Value);
             colorArea.Background = new SolidColorBrush(currentColor.Color);
 
+            var matchedColor = ((MyColor[])DataContext).FirstOrDefault(c => c.Color == currentColor.Color);
+            currentColor.Name = matchedColor.Name ?? $"R: {currentColor.Color.R}, G: {currentColor.Color.G}, B: {currentColor.Color.B}";
         }
 
         private void StockButton_Click(object sender, RoutedEventArgs e) {
-            if (!LB.Items.OfType<MyColor>().Any(color => color.Color == currentColor.Color)) {
-                LB.Items.Insert(0, currentColor);
+            var colorName = currentColor.Name ?? $"{currentColor.Color}";
+            var colorExists = LB.Items.OfType<MyColor>().Any(color => color.Color == currentColor.Color);
+
+            if (!colorExists) {
+                LB.Items.Insert(0, new MyColor { Color = currentColor.Color, Name = colorName });
             } else {
                 MessageBox.Show("この色は追加済です。");
             }
