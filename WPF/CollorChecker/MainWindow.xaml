@@ -42,7 +42,23 @@
             <!--<TextBox Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="" Margin="0,20"/>-->
             <TextBox x:Name="bTextBox" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="{Binding ElementName=bSlider, Path=Value}" Margin="0,20"/>
 
-            <ComboBox x:Name="colorSelectComboBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center"/>
+            <!--<ComboBox x:Name="colorSelectComboBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" SelectionChanged="colorSelectComboBox_SelectionChanged"/>-->
+            <ComboBox x:Name="colorSelectComboBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" 
+          SelectionChanged="colorSelectComboBox_SelectionChanged"
+          ItemsSource="{Binding}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Border Width="20" Height="Auto" Margin="5,0" BorderThickness="1" BorderBrush="Black">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{Binding Color}"/>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Text="{Binding Name}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </Grid>
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
