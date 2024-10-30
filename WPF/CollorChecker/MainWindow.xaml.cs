@@ -42,12 +42,14 @@ namespace CollorChecker {
         }
 
         private void LB_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            colorArea.Background = new SolidColorBrush(((MyColor)LB.Items[LB.SelectedIndex]).Color);
-            rSlider.Value = ((MyColor)LB.Items[LB.SelectedIndex]).Color.R;
-            gSlider.Value = ((MyColor)LB.Items[LB.SelectedIndex]).Color.G;
-            bSlider.Value = ((MyColor)LB.Items[LB.SelectedIndex]).Color.B;
+            if (LB.SelectedIndex >= 0) {
+                MyColor selectedColor = (MyColor)LB.Items[LB.SelectedIndex];
+                colorArea.Background = new SolidColorBrush(selectedColor.Color);
+                rSlider.Value = selectedColor.Color.R;
+                gSlider.Value = selectedColor.Color.G;
+                bSlider.Value = selectedColor.Color.B;
+            }
 
-            
         }
 
         private void colorSelectComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -61,6 +63,14 @@ namespace CollorChecker {
                 bSlider.Value = selectedColor.Color.B;
             }
 
+        }
+
+        private void DropButton_Click(object sender, RoutedEventArgs e) {
+            if (LB.SelectedItem != null) {
+                LB.Items.Remove(LB.SelectedItem);
+            } else {
+                MessageBox.Show("削除する色を選択してください。");
+            }
         }
     }
 }
