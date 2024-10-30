@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CollorChecker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="700">
+        Title="MainWindow" Height="300" Width="720">
     <Grid HorizontalAlignment="Left" Width="700">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -30,17 +30,17 @@
             <TextBlock Grid.Row="0" HorizontalAlignment="Center" Text="R" VerticalAlignment="Bottom" Margin="0,0,0,28" FontSize="30"/>
             <Slider x:Name="rSlider" Maximum="255" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
             <!--<TextBox Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Text="" Margin="0,20"/>-->
-            <TextBox x:Name="rTextBox" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Text="{Binding ElementName=rSlider, Path=Value}" Margin="0,20"/>
+            <TextBox x:Name="rTextBox" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Text="{Binding ElementName=rSlider, Path=Value, StringFormat=F0}" Margin="0,20" FontSize="15"/>
 
             <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Text="G" VerticalAlignment="Center" FontSize="30"/>
             <Slider x:Name="gSlider" Maximum="255" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
             <!--<TextBox Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="" Margin="0,20"/>-->
-            <TextBox x:Name="gTextBox" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="{Binding ElementName=gSlider, Path=Value}" Margin="0,20"/>
+            <TextBox x:Name="gTextBox" Grid.Row="1" Grid.Column="2" TextWrapping="Wrap" Text="{Binding ElementName=gSlider, Path=Value, StringFormat=F0}" Margin="0,20" FontSize="15"/>
 
             <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" Text="B" VerticalAlignment="Center" FontSize="30"/>
             <Slider x:Name="bSlider" Maximum="255" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" ValueChanged="Slider_ValueChanged"/>
             <!--<TextBox Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="" Margin="0,20"/>-->
-            <TextBox x:Name="bTextBox" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="{Binding ElementName=bSlider, Path=Value}" Margin="0,20"/>
+            <TextBox x:Name="bTextBox" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Text="{Binding ElementName=bSlider, Path=Value, StringFormat=F0}" Margin="0,20" FontSize="15"/>
 
             <!--<ComboBox x:Name="colorSelectComboBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" SelectionChanged="colorSelectComboBox_SelectionChanged"/>-->
             <ComboBox x:Name="colorSelectComboBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" 
@@ -66,15 +66,15 @@
                 <RowDefinition Height="5*"/>
 
             </Grid.RowDefinitions>
-            <Button x:Name="StockButton" Grid.Row="0" FontSize="16" Content="STOCK" Margin="10,10,123,10" Click="StockButton_Click" Background="#FF02B36E"/>
-            <ListBox x:Name="LB" Margin="10,0,10,10" Grid.Row="1" SelectionChanged="LB_SelectionChanged">
+            <Button x:Name="StockButton" Grid.Row="0" FontSize="16" Content="STOCK" Margin="10,10,85,10" Click="StockButton_Click" Background="#FF02B36E"/>
+            <ListBox x:Name="LB" Margin="10,0,10,10" Grid.Row="1" SelectionChanged="LB_SelectionChanged" FontFamily="HGSeikaishotaiPRO">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Button x:Name="DropButton" Grid.Row="0" FontSize="16" Content="DROP" Margin="123,10,10,10" Click="DropButton_Click" Background="Red"/>
+            <Button x:Name="DropButton" Grid.Row="0" FontSize="16" Content="DROP" Margin="160,10,10,10" Click="DropButton_Click" Background="Red"/>
         </Grid>
 
 
