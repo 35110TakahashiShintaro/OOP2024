@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace SampleWeightUnitConverter {
     internal class GramUnit : WeightUnit {
         private static readonly List<GramUnit> units = new List<GramUnit> {
-            new GramUnit { Name = "mg", Coefficient = 0.001 },    // ミリグラム
-            new GramUnit { Name = "g", Coefficient = 1 },         // グラム
-            new GramUnit { Name = "kg", Coefficient = 1000 },     // キログラム
-            new GramUnit { Name = "ct", Coefficient = 0.2 },      // カラット 
+            new GramUnit { Name = "mg", Coefficient = 0.001 },   
+            new GramUnit { Name = "g", Coefficient = 1 },         
+            new GramUnit { Name = "kg", Coefficient = 1000 },     
+            new GramUnit { Name = "ct", Coefficient = 0.2 },  
             
         };
 

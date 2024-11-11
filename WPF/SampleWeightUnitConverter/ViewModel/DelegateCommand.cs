@@ -10,11 +10,9 @@ namespace SampleWeightUnitConverter {
         private readonly Action execute;
         private readonly Func<bool> canExecute;
 
-        //コンストラクタ（引数一つ）
         public DelegateCommand(Action execute)
             : this(execute, () => true) { }
 
-        //コンストラクタ（引数二つ）
         public DelegateCommand(Action execute, Func<bool> canExecute) {
             this.execute = execute;
             this.canExecute = canExecute;
