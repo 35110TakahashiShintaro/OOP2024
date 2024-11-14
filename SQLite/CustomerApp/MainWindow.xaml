@@ -16,6 +16,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -25,16 +26,30 @@
                 <TextBox x:Name="NameTextBox" Grid.Row="0" Grid.Column="1"/>
                 <TextBlock Text="電話番号" Grid.Row="1" Grid.Column="0"/>
                 <TextBox x:Name="PhoneTextBox" Grid.Row="1" Grid.Column="1"/>
+                <TextBlock Text="住所" Grid.Row="2" Grid.Column="0"/>
+                <TextBox x:Name="AddressTextBox" Grid.Row="2" Grid.Column="1"/>
             </Grid>
             <Button Content="Save" x:Name="SaveButton" Click="SaveButton_Click"/>
             <Button Content="Read" x:Name="ReadButton" Click="ReadButton_Click"/>
             <ListView x:Name="CustomerListView" Margin="0,5,0,0">
-                <ListView.View>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Id}"/>
+                            <TextBlock Text="{Binding Name}" FontSize="20"/>
+                            <TextBlock Text="{Binding Phone}" Foreground="GreenYellow"/>
+                            <TextBlock Text="{Binding Address}" FontSize="20" Foreground="Tan"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+
+                <!--<ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="150"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Phone}" Width="150"/>
+                        <GridViewColumn  DisplayMemberBinding="{Binding Phone}" Width="150"/>
                     </GridView>
-                </ListView.View>
+                </ListView.View>-->
             </ListView>
 
 

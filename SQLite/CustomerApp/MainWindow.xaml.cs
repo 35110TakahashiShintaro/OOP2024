@@ -28,6 +28,7 @@ namespace CustomerApp {
             var customer = new Customer() {
                 Name = NameTextBox.Text,
                 Phone = PhoneTextBox.Text,
+                Address = AddressTextBox.Text,
             };
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
