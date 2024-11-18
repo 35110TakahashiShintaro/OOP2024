@@ -34,8 +34,8 @@
             <Button Content="Update" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="2"/>
             
             <TextBox x:Name="SearchTextBox" FontSize="20" TextChanged="SearchTextBox_TextChanged"/>
-            
-            <ListView x:Name="CustomerListView" Margin="0,5,0,0" Height="300">
+
+            <ListView x:Name="CustomerListView" Margin="0,5,0,0" Height="300" SelectionChanged="CustomerListView_SelectionChanged">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
