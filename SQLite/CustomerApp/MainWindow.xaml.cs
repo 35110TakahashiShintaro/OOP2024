@@ -25,18 +25,20 @@ namespace CustomerApp {
             InitializeComponent();
             ReadDatabase();
         }
-
+        private byte[] _selectedImageData;
         private void SaveButton_Click(object sender, RoutedEventArgs e) {
             var customer = new Customer() {
                 Name = NameTextBox.Text,
                 Phone = PhoneTextBox.Text,
                 Address = AddressTextBox.Text,
+                ImageData = _selectedImageData // 画像データを保存
             };
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
                 connection.Insert(customer);
             }
+            _selectedImageData = null; // 保存後に画像データをクリア
             ReadDatabase();
         }
 
@@ -51,11 +53,15 @@ namespace CustomerApp {
             selectedCustomer.Phone = PhoneTextBox.Text;
             selectedCustomer.Address = AddressTextBox.Text;
 
+            if (_selectedImageData != null) {
+                selectedCustomer.ImageData = _selectedImageData;
+            }
+
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
                 connection.Update(selectedCustomer);
             }
-
+            _selectedImageData = null;
             ReadDatabase();
         }
 
@@ -82,9 +88,9 @@ namespace CustomerApp {
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
                 connection.Delete(Item);
-
-                ReadDatabase(); //ListView表示
+                ReadDatabase(); // ListView表示
             }
+            CustomerImage.Source = null; 
 
         }
         private void CustomerListView_SelectionChanged(object sender, SelectionChangedEventArgs e) {
@@ -93,6 +99,37 @@ namespace CustomerApp {
                 NameTextBox.Text = selectedCustomer.Name;
                 PhoneTextBox.Text = selectedCustomer.Phone;
                 AddressTextBox.Text = selectedCustomer.Address;
+
+                
+                if (selectedCustomer.ImageData != null) {
+                    using (var stream = new System.IO.MemoryStream(selectedCustomer.ImageData)) {
+                        var bitmap = new BitmapImage();
+                        bitmap.BeginInit();
+                        bitmap.StreamSource = stream;
+                        bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmap.EndInit();
+                        CustomerImage.Source = bitmap;
+                    }
+                } else {
+                    CustomerImage.Source = null;
+                }
+            }
+        }
+
+        private void SelectImageButton_Click(object sender, RoutedEventArgs e) {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.png;*.jpeg;*.jpg)|*.png;*.jpeg;*.jpg";
+
+            if (openFileDialog.ShowDialog() == true) {
+                var bitmap = new BitmapImage(new Uri(openFileDialog.FileName));
+                CustomerImage.Source = bitmap;
+
+                using (var stream = new System.IO.MemoryStream()) {
+                    var encoder = new PngBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(bitmap));
+                    encoder.Save(stream);
+                    _selectedImageData = stream.ToArray(); 
+                }
             }
         }
     }

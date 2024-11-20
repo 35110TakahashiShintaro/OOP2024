@@ -321,6 +321,10 @@ namespace CarReportSystem {
 
 
         }
+
+        private void pbPicture_Click(object sender, EventArgs e) {
+
+        }
     }
 
 }

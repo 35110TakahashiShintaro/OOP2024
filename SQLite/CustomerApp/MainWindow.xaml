@@ -29,6 +29,11 @@
                 <TextBlock Text="住所" Grid.Row="2" Grid.Column="0"/>
                 <TextBox x:Name="AddressTextBox" Grid.Row="2" Grid.Column="1"/>
             </Grid>
+            <StackPanel Margin="10,5,10,0">
+                <Image x:Name="CustomerImage" Height="100" Width="197" Margin="5"/>
+                <Button Content="画像選択" Click="SelectImageButton_Click" Margin="2"/>
+            </StackPanel>
+
             <Button Content="Save" x:Name="SaveButton" Click="SaveButton_Click" Margin="2"/>
             <Button Content="Delete" x:Name="DeleteButton" Click="DeleteButton_Click" Margin="2"/>
             <Button Content="Update" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="2"/>
