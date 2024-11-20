@@ -55,6 +55,8 @@ namespace CustomerApp {
 
             if (_selectedImageData != null) {
                 selectedCustomer.ImageData = _selectedImageData;
+            } else {
+                selectedCustomer.ImageData = null;
             }
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
@@ -132,6 +134,13 @@ namespace CustomerApp {
                 }
             }
         }
+
+        private void DeleteImageButton_Click(object sender, RoutedEventArgs e) {
+            _selectedImageData = null;  
+            CustomerImage.Source = null;
+        }
+
+        
     }
     
 }
