@@ -27,6 +27,10 @@ namespace CustomerApp {
         }
         private byte[] _selectedImageData;
         private void SaveButton_Click(object sender, RoutedEventArgs e) {
+            if (string.IsNullOrWhiteSpace(NameTextBox.Text)) {
+                MessageBox.Show("名前を入力してくだせえ。");
+                return;
+            }
             var customer = new Customer() {
                 Name = NameTextBox.Text,
                 Phone = PhoneTextBox.Text,
@@ -55,17 +59,17 @@ namespace CustomerApp {
 
             if (_selectedImageData != null) {
                 selectedCustomer.ImageData = _selectedImageData;
-            } else {
-                selectedCustomer.ImageData = null;
             }
 
             using (var connection = new SQLiteConnection(App.databasePass)) {
                 connection.CreateTable<Customer>();
                 connection.Update(selectedCustomer);
             }
+
             _selectedImageData = null;
             ReadDatabase();
         }
+
 
         private void ReadDatabase() {
             using (var connection = new SQLiteConnection(App.databasePass)) {
