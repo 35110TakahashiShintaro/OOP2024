@@ -144,7 +144,16 @@ namespace CustomerApp {
             CustomerImage.Source = null;
         }
 
-        
+        private void SearchButton_Click(object sender, RoutedEventArgs e) {
+            var searchQuery = SearchTextBox.Text;
+            var filteredList = _customers.Where(x => x.Name.Contains(searchQuery)).ToList();
+            CustomerListView.ItemsSource = filteredList;
+
+            if (!filteredList.Any()) {
+                MessageBox.Show("見つかりません。");
+            }
+
+        }
     }
     
 }

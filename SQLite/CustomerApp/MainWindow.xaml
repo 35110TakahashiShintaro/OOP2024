@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="431" Width="300">
+        Title="CustomerApp" Height="430" Width="330">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="#FFEA4D4D" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="19*"/>
             <ColumnDefinition/>
@@ -23,36 +29,69 @@
                     <ColumnDefinition Width="8*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="名前" Grid.Row="0" Grid.Column="0"/>
-                <TextBox x:Name="NameTextBox" Grid.Row="0" Grid.Column="1"/>
+                <TextBox x:Name="NameTextBox" Grid.Row="0" Grid.Column="1" Background="#FFF3C8C8"/>
                 <TextBlock Text="電話番号" Grid.Row="1" Grid.Column="0"/>
-                <TextBox x:Name="PhoneTextBox" Grid.Row="1" Grid.Column="1"/>
+                <TextBox x:Name="PhoneTextBox" Grid.Row="1" Grid.Column="1" Background="#FFF3C8C8"/>
                 <TextBlock Text="住所" Grid.Row="2" Grid.Column="0"/>
-                <TextBox x:Name="AddressTextBox" Grid.Row="2" Grid.Column="1"/>
+                <TextBox x:Name="AddressTextBox" Grid.Row="2" Grid.Column="1" Background="#FFF3C8C8"/>
             </Grid>
             <StackPanel Margin="10,5,10,0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="画像選択" Click="SelectImageButton_Click" Width="80" Margin="5"/>
-                    <Button Content="画像削除" Click="DeleteImageButton_Click" Width="80" Margin="5"/>
+                    <Button Content="画像選択" Click="SelectImageButton_Click" Width="80" Margin="5" Background="#FFFB7373"/>
+                    <Button Content="画像削除" Click="DeleteImageButton_Click" Width="80" Margin="5" Background="#FFFB7373"/>
                 </StackPanel>
-                <Image x:Name="CustomerImage" Height="100" Width="199" Margin="5"/>
+                <Image x:Name="CustomerImage" Height="117" Width="219" Margin="5"/>
             </StackPanel>
 
-            <Button Content="登録" x:Name="SaveButton" Click="SaveButton_Click" Margin="2"/>
-            <Button Content="削除" x:Name="DeleteButton" Click="DeleteButton_Click" Margin="2"/>
-            <Button Content="更新" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="2"/>
+            <Button Content="登録" x:Name="SaveButton" Click="SaveButton_Click" Margin="2" Height="30">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFE62A2A" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Content="更新" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="2">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="White"/>
+                        <GradientStop Color="#FFE62A2A" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Content="削除" x:Name="DeleteButton" Click="DeleteButton_Click" Margin="160,2,2,2">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF775E5E"/>
+                        <GradientStop Color="WhiteSmoke" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
 
-            <TextBox x:Name="SearchTextBox" FontSize="20" TextChanged="SearchTextBox_TextChanged"/>
 
-            <ListView x:Name="CustomerListView" Margin="0,5,0,0" Height="300" SelectionChanged="CustomerListView_SelectionChanged">
+            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                <TextBox x:Name="SearchTextBox" FontSize="20" Width="210" Background="#FFF3C8C8"/>
+                <Button Content="検索" x:Name="SearchButton" Width="80" Click="SearchButton_Click" Margin="5,0,0,0">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE84C4C" Offset="0"/>
+                            <GradientStop Color="White" Offset="0.87"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+
+
+            <ListView x:Name="CustomerListView" Margin="0,5,0,0" Height="300" SelectionChanged="CustomerListView_SelectionChanged" Background="#FFF3C8C8">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="名前" Width="100" DisplayMemberBinding="{Binding Name}"/>
                         <GridViewColumn Header="電話番号" Width="120" DisplayMemberBinding="{Binding Phone}"/>
-                        <GridViewColumn Header="住所" Width="150" DisplayMemberBinding="{Binding Address}"/>
+                        <GridViewColumn Header="住所" Width="200" DisplayMemberBinding="{Binding Address}"/>
                         <GridViewColumn Header="画像" Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Width="100" Height="100" Source="{Binding ImageSource}" Margin="5"/>
+                                    <Image Width="180" Height="100" Source="{Binding ImageSource}" Margin="5"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
