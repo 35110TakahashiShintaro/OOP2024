@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerApp"
         mc:Ignorable="d"
-        Title="CustomerApp" Height="430" Width="330">
+        Title="CustomerApp" Height="715" Width="670">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -28,22 +28,21 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="8*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="名前" Grid.Row="0" Grid.Column="0"/>
+                <TextBlock Text="名前" Grid.Row="0" Grid.Column="0" FontFamily="Rockwell Extra Bold"/>
                 <TextBox x:Name="NameTextBox" Grid.Row="0" Grid.Column="1" Background="#FFF3C8C8"/>
-                <TextBlock Text="電話番号" Grid.Row="1" Grid.Column="0"/>
+                <TextBlock Text="電話番号" Grid.Row="1" Grid.Column="0" FontFamily="Rockwell Extra Bold"/>
                 <TextBox x:Name="PhoneTextBox" Grid.Row="1" Grid.Column="1" Background="#FFF3C8C8"/>
-                <TextBlock Text="住所" Grid.Row="2" Grid.Column="0"/>
+                <TextBlock Text="住所" Grid.Row="2" Grid.Column="0" FontFamily="Rockwell Extra Bold"/>
                 <TextBox x:Name="AddressTextBox" Grid.Row="2" Grid.Column="1" Background="#FFF3C8C8"/>
             </Grid>
             <StackPanel Margin="10,5,10,0">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="画像選択" Click="SelectImageButton_Click" Width="80" Margin="5" Background="#FFFB7373"/>
-                    <Button Content="画像削除" Click="DeleteImageButton_Click" Width="80" Margin="5" Background="#FFFB7373"/>
+                    <Button Content="画像選択" Click="SelectImageButton_Click" Width="80" Margin="5" Background="#FFFB7373" FontFamily="Rockwell Extra Bold" FontSize="14"/>
+                    <Button Content="画像削除" Click="DeleteImageButton_Click" Width="80" Margin="5" Background="#FFFB7373" FontFamily="Rockwell Extra Bold" FontSize="14"/>
                 </StackPanel>
-                <Image x:Name="CustomerImage" Height="117" Width="219" Margin="5"/>
+                <Image x:Name="CustomerImage" Height="146" Width="349" Margin="5"/>
             </StackPanel>
-
-            <Button Content="登録" x:Name="SaveButton" Click="SaveButton_Click" Margin="2" Height="30">
+            <Button Content="登録" x:Name="SaveButton" Click="SaveButton_Click" Height="30" FontFamily="Rockwell Extra Bold" FontSize="20">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -51,7 +50,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button Content="更新" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="2">
+            <Button Content="更新" x:Name="UpdateButton" Click="UpdateButton_Click" Margin="2" FontFamily="Rockwell Extra Bold">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White"/>
@@ -59,7 +58,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button Content="削除" x:Name="DeleteButton" Click="DeleteButton_Click" Margin="160,2,2,2">
+            <Button Content="削除" x:Name="DeleteButton" Click="DeleteButton_Click" Margin="350,2,2,2" FontFamily="Rockwell Extra Bold">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FF775E5E"/>
@@ -71,7 +70,7 @@
 
             <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
                 <TextBox x:Name="SearchTextBox" FontSize="20" Width="210" Background="#FFF3C8C8"/>
-                <Button Content="検索" x:Name="SearchButton" Width="80" Click="SearchButton_Click" Margin="5,0,0,0">
+                <Button Content="検索" x:Name="SearchButton" Width="80" Click="SearchButton_Click" Margin="5,0,0,0" FontFamily="Rockwell Extra Bold">
                     <Button.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                             <GradientStop Color="#FFE84C4C" Offset="0"/>
